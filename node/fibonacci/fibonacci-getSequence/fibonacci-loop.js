@@ -45,7 +45,7 @@ function fibUpTo( position ){
 // console.log( `position = 3    =>   ${JSON.stringify( fibUpTo( 3 ) )}` );
 // console.log( `position = 4    =>   ${JSON.stringify( fibUpTo( 4 ) )}` );
 // console.log( `position = 5    =>   ${JSON.stringify( fibUpTo( 5 ) )}` );
-// console.log( `position = 11   =>   ${JSON.stringify( fibUpTo( 11 ) )}` );
+console.log( `position = 11   =>   ${JSON.stringify( fibUpTo( 11 ) )}` );
 
 
 function fibStartEndAt( start, end ){
