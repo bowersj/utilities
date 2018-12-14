@@ -30,13 +30,18 @@ function randomIntBounded(min, max ){
 }
 
 
-
 function randomFloatBounded(min, max){
     return ( Math.random() * ( max - min ) ) + min;
 }
 
 
+function randomFloat( scalar ){
+    return Math.random()*scalar;
+}
+
 
 module.exports.randomInt = randomInt;
 module.exports.randomIntBounded = randomIntBounded;
+
+module.exports.randomFloat = randomFloat;
 module.exports.randomFloatBounded = randomFloatBounded;
