@@ -3,7 +3,7 @@ This is generic repository for common functions I need often.
 
 ## Folder Structure
       
-Here is the layout example of node as the enviroment and the code I wriet for it (as of 12/11/2018)
+Here is the layout example of node as the enviroment and the code I write for it (as of 12/11/2018)
 
 ```
 root
