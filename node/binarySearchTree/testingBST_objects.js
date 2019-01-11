@@ -1,3 +1,5 @@
+let BST = require( "./bst_objects.js" );
+
 // BST testing
 let bst = new BST();
 

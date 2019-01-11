@@ -69,8 +69,7 @@ class Node {
     }
 }
 
-// module.exports.BST =
-    class BST{
+module.exports = class BST{
     constructor(){
         this.root = null;
     }
@@ -475,14 +474,3 @@ class Node {
         return this.validate();
     }
 };
-
-let bst = new BST(); // initialize the binary search tree
-bst.insert(5);    // adding 5 to bst
-bst.insert(3);    // adding 3 to bst
-bst.insert(2);    // adding 2 to bst
-bst.insert(4);    // adding 4 to bst
-bst.insert(7);    // adding 7 to bst
-bst.insert(6);    // adding 6 to bst
-bst.insert(8);    // adding 8 to bst
-
-console.log( bst.balance() );
