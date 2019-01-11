@@ -1,5 +1,7 @@
 # Binary Search Tree
 
+![Binary Search Tree](https://i.stack.imgur.com/9jegh.png "Binary Search Tree")
+
 This directory contains two types of files, a version to 
 run in `node.js` and a pure javascript version. If you 
 want to run a BST in the browser go with the Pure 
