@@ -7,28 +7,45 @@
  *
  */
 
+/*
+ * binarySearch
+ *
+ * Purpose
+ * Search through a sorted list, that is a list in ascending order,
+ * to find the location, or index, of the value you are looking for;
+ * if it does not exist then the function returns -1.
+ *
+ * Given the following list below which below that are examples of calling
+ * binarySearch and the results of the call
+ * [ 0,2,4,6,8,9,10 ]
+ *
+ * binarySearch( 4 )  // => 2
+ * binarySearch( 10 ) // => 6
+ * binarySearch( -2 ) // => -1
+ *
+ */
 function binarySearch( arr, search ) {
     let start = 0;
     let end   = arr.length;
 
-    // console.log( start, end );
-
+    //
     while( start <= end ){
+        // get the middle of the list as a reference to allow for
+        // identifying which half to ignore while searching through it.
         let mid = Math.floor( ( end - start )/2 ) + start;
-        // console.log( start, end );
 
         if( arr[mid] === search ) return mid;
 
-        if( arr[mid] < search ){
-            start = mid + 1;
-        } else {
-            end = mid - 1;
-        }
+        // logic for what to ignore as the algorithm is searching
+        // through the list.
+        if( arr[mid] < search ) start = mid + 1;
+        else end = mid - 1;
     }
 
     return -1
 }
 
+// Test cases
 // console.log(
 //     binarySearch(
 //         [1,2,3,4,5],
