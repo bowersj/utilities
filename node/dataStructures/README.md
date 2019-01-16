@@ -11,12 +11,13 @@ of useful code. So please post your enhancements in the issues and mark it as a 
 
 Here is a list of the current data structures
 
-* Singly Linked Lists
-* Doubly Linked Lists
-* Stacks
-* Queues
-* Binary Search Trees
-* Priority Queues
+* [Singly Linked Lists](https://github.com/bowersj/utilities/blob/master/node/dataStructures/singlyLinkedLists)
+* [Doubly Linked Lists](https://github.com/bowersj/utilities/blob/master/node/dataStructures/doublyLinkedLists)
+* [Stacks](https://github.com/bowersj/utilities/blob/master/node/dataStructures/stack)
+* [Queues](https://github.com/bowersj/utilities/blob/master/node/dataStructures/queue)
+* [Binary Search Trees](https://github.com/bowersj/utilities/blob/master/node/dataStructures/binarySearchTree)
+* [Priority Queues](https://github.com/bowersj/utilities/blob/master/node/dataStructures/priorityQueue)
+* [Binary Heaps](https://github.com/bowersj/utilities/tree/master/node/dataStructures/binaryHeaps)
 
 I am planning on adding the following, when I can find the time...
 
