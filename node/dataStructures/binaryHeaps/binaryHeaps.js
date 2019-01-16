@@ -4,14 +4,12 @@ class MaxBinaryHeap{
     constructor(){
         this.values = [];
     }
-
     insert( val ){
         this.values.push( val );
 
         this.bubbleUp();
         return true;
     }
-
     bubbleUp(){
         let idx = this.values.length - 1;
         let child = this.values[ idx ];
@@ -32,7 +30,6 @@ class MaxBinaryHeap{
             idx = parentIdx;
         }
     }
-
     getMax(){
         // swap first and last
         let max = this.values[0];
