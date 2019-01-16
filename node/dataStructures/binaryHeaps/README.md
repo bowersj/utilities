@@ -1,6 +1,6 @@
 # Binary Heaps (Max Binary Heap)
 
-A heap, as I have implamented it, is an array contain values in a sorted order, lowest to highest (ascending) or highest 
+A Binary Heap, as I have implamented it, is an array contain values in a sorted order, lowest to highest (ascending) or highest 
 to lowest (descending). The followning methods come with the heap class I implamented.
 
 * __[insert](https://github.com/bowersj/utilities/blob/db39eaf06a7972d456bf2a6cbf5f02133158f4af/node/dataStructures/binaryHeaps/binaryHeaps.js#L8)__ - adds a value to the heap in sorted order, thus maintaining the requirement of a heap.
