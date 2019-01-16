@@ -83,6 +83,12 @@ class MaxBinaryHeap{
             parentIdx = swap;
         }
     }
+    clear(){
+        if( this.values.length === 0 ) return true
+        alert( "Are you sure you would like to remove all the values from the heap?" );
+        this.values = [];
+        return true;
+    }
 }
 
 let heap = new MaxBinaryHeap();
