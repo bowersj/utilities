@@ -2,8 +2,7 @@
 
 These data strucutes are using ES6 features and thus require a modern browser to run them.
 
-With that caviot out of the way, I would like to point out that these data structures are taken from a [course]
-(https://www.udemy.com/js-algorithms-and-data-structures-masterclass/)
+With that caviot out of the way, I would like to point out that these data structures are taken from a [course](https://www.udemy.com/js-algorithms-and-data-structures-masterclass/)
 on [Udemy](https://www.udemy.com/) they are not perfect by anymeans but are a good starting point and could
 use significant enhancement. Anyone who wants to enhance these classes and data structures can do so as
 long they are in complience with the license agreement found in the LICENSE file at the root of the repository.
