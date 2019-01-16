@@ -6,8 +6,8 @@ With that caviot out of the way, I would like to point out that these data struc
 on [Udemy](https://www.udemy.com/) they are not perfect by anymeans but are a good starting point and could
 use significant enhancement. Anyone who wants to enhance these classes and data structures can do so as
 long they are in complience with the license agreement found in the LICENSE file at the root of the repository.
-I would love to see your enhancements as well and with your permission would love to add them to this collection
-of useful code so please post your enhancements in the issues and mark it as a feature request.
+I would love to see your enhancements as well and, with your permission, would love to add them to this collection
+of useful code. So please post your enhancements in the issues and mark it as a feature request.
 
 Here is a list of the current data structures
 
