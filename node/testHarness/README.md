@@ -1,7 +1,7 @@
 # Test Harness
 
 ### Credit Where it is Due
-In all fairness I did not build this test harness, but my father has and 
+In all fairness I did not build this test harness, Mike Bowers did and 
 since I use this often I have added it to this repo.
 
 
