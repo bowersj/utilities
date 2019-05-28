@@ -89,19 +89,26 @@ class MaxBinaryHeap{
 }
 
 let heap = new MaxBinaryHeap();
-heap.insert(41);
-heap.insert(39);
-heap.insert(33);
-heap.insert(18);
-heap.insert(27);
-heap.insert(55);
-heap.insert(12);
 
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( heap.getMax() );
-console.log( JSON.stringify( heap, null, 2 ) );
+heap.insert( 41 );
+heap.insert( 27 );
+heap.insert( 55 );
+
+console.log( heap.values );
+
+// heap.insert(41);
+// heap.insert(39);
+// heap.insert(33);
+// heap.insert(18);
+// heap.insert(27);
+// heap.insert(55);
+// heap.insert(12);
+//
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( heap.getMax() );
+// console.log( JSON.stringify( heap, null, 2 ) );
