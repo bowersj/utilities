@@ -33,16 +33,16 @@ const intFor = {
     "Null":           2,
 
     "boolean":        3,
-    "Boolean":        3,
+    "Boolean":        9,
 
     "number":         4,
-    "Number":         4,
+    "Number":         9,
 
     "bigint":         5,
     "Bigint":         5,
 
     "string":         6,
-    "String":         6,
+    "String":         9,
 
     "symbol":         7,
     "Symbol":         7,
@@ -176,7 +176,7 @@ function _typeofWrapper( value ){
 
 function _singleComparator( value, type ){
     let valueType = _typeofWrapper( value );
-    let comparisonType =  intFor[ type ];
+    let comparisonType = intFor[ type ];
 
     // console.log(valueType);
     // console.log(comparisonType);
@@ -188,40 +188,12 @@ function _singleComparator( value, type ){
 }
 
 
-function _multipleComparator( value, type ){
-    let valueType = _typeofWrapper( value );
-
-    if( valueType === -1 )
-        return false;
-
-    let comparisonType = -1;
-
-    for( let i = 0; i < type.length; ++i ){
-        comparisonType = _typeofWrapper( type[i] );
-
-        if( comparisonType !== intFor[ "string" ] )
-            throw new TypeError( `the item at ${i} in type must be a string it was ${typeof type[i]}.` );
-
-        if( valueType === -1 )
-            return false;
-
-        if( valueType !== comparisonType )
-            break;
-    }
-
-    return valueType === comparisonType
-}
-
-
 function comparator( value, type ){
 
-    if( _typeofWrapper( type ) !== intFor[ "string" ] && !Array.isArray( type ) )
-        throw new TypeError( `type must be a string or an array of strings. It is currently ${ type }` );
+    if( _typeofWrapper( type ) !== intFor[ "string" ] )
+        throw new TypeError( `type must be a string or an array of strings. It is currently ${ typeof type }` );
 
-    // if( Array.isArray( type ) )
-    //     return _multipleComparator( value, type );
-    // else
-        return _singleComparator( value, type )
+    return _singleComparator( value, type )
 }
 
 
