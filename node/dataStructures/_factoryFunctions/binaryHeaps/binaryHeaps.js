@@ -59,7 +59,7 @@ const binaryHeap = (function(){
 
 }());
 
-binaryHeap.insert( 41 );
-binaryHeap.insert( 27 );
-binaryHeap.insert( 55 );
-binaryHeap.log();
+// binaryHeap.insert( 41 );
+// binaryHeap.insert( 27 );
+// binaryHeap.insert( 55 );
+// binaryHeap.log();
