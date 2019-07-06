@@ -1,13 +1,15 @@
 'use strict';
-module.exports.runTest = runTest
-module.exports.runTestSet = runTestSet
+module.exports.runTest = runTest;
+module.exports.runTestSet = runTestSet;
 
-module.exports.createTestOptions = createTestOptions
-module.exports.createTestSet = createTestSet
-module.exports.closeOutTesting = closeOutTesting
+module.exports.createTestOptions = createTestOptions;
+module.exports.createTestSet = createTestSet;
+module.exports.closeOutTesting = closeOutTesting;
 
-module.exports.startTestMetrics = startTestMetrics 
-module.exports.finishTestMetrics = finishTestMetrics
+module.exports.startTestMetrics = startTestMetrics;
+module.exports.finishTestMetrics = finishTestMetrics;
+
+module.exports.getTestSet_CriticalValues = getTestSet_CriticalValues;
 
 
 /* 
@@ -224,10 +226,10 @@ function equal (lhs, rhs) { return lhs === rhs }
  *
  */
 
-const BigNumber = require('bignumber.js');
-const { DateTime } = require('luxon');
-const { Duration } = require('luxon');
-const { Interval } = require('luxon');
+// const BigNumber = require('bignumber.js');
+// const { DateTime } = require('luxon');
+// const { Duration } = require('luxon');
+// const { Interval } = require('luxon');
    
 /*  ------------------------------------------------------------------------------
  * 
@@ -394,7 +396,7 @@ function runTestSet( testFunction, testSet, testOptions ) {
  *  
  */  
 function runTest( testFunction, testConfig={}, testOptions ) {  
-  let { successArray=[], failureArray=[], testMetrics, message=''  } = testOptions
+  let { successArray=[], failureArray=[], testMetrics, message=''  } = testOptions;
 
   let arg1  = testConfig.arg1;
   let arg2  = testConfig.arg2;
@@ -782,22 +784,22 @@ function getTestSet_CriticalValues() {
     { index: 145, arg1: Symbol('foo'),                                                                            comment: 'Symbol() typeof==="symbol";  constructor.name==="Symbol";  .valueOf()===foo;        .toString()==="Symbol(foo)";  JSON.stringify()===undefined;   MarkLogic==="foo"  '   },
     { index: 146, arg1: Symbol('foo'),                                                                            comment: 'Symbol() typeof==="symbol";  constructor.name==="Symbol";  .valueOf()===foo;        .toString()==="Symbol(foo)";  JSON.stringify()===undefined;   MarkLogic==="foo"  '   },
 
-    { index: 147, arg1: BigNumber(+0),                                                                            comment: '' },
-    { index: 148, arg1: BigNumber(-0),                                                                            comment: '' },
-    { index: 149, arg1: BigNumber(0),                                                                             comment: '' },
-    { index: 150, arg1: BigNumber(NaN),                                                                           comment: '' },
-    { index: 151, arg1: BigNumber(Infinity),                                                                      comment: '' },
-    { index: 152, arg1: BigNumber(-Infinity),                                                                     comment: '' },
-    { index: 153, arg1: BigNumber("1025896473569873254137895.02511669844"),                                       comment: '' },
-    { index: 154, arg1: BigNumber(1234567899),                                                                    comment: '' },
-    { index: 155, arg1: BigNumber("-1025896473569873254137895.02511669844"),                                      comment: '' },
-    { index: 156, arg1: BigNumber(-1234567899),                                                                   comment: '' },
-    { index: 157, arg1: DateTime.fromISO("2016-11-05T09:15:00"),                                                  comment: '' },
-    { index: 158, arg1: DateTime.fromISO("2017-W23-5"),                                                           comment: '' },
-    { index: 159, arg1: DateTime.fromISO("2017-W43-5"),                                                           comment: '' },
-    { index: 160, arg1: Duration.fromObject({months: 7, days: 3, hours: 6}),                                      comment: '' },
-    { index: 161, arg1: Duration.fromObject({months: 2, hours: 6}),                                               comment: '' },
-    { index: 162, arg1: Interval.fromDateTimes( DateTime.fromISO("2017-W23-5"), DateTime.fromISO("2017-W43-5") ), comment: '' },
+    // { index: 147, arg1: BigNumber(+0),                                                                            comment: '' },
+    // { index: 148, arg1: BigNumber(-0),                                                                            comment: '' },
+    // { index: 149, arg1: BigNumber(0),                                                                             comment: '' },
+    // { index: 150, arg1: BigNumber(NaN),                                                                           comment: '' },
+    // { index: 151, arg1: BigNumber(Infinity),                                                                      comment: '' },
+    // { index: 152, arg1: BigNumber(-Infinity),                                                                     comment: '' },
+    // { index: 153, arg1: BigNumber("1025896473569873254137895.02511669844"),                                       comment: '' },
+    // { index: 154, arg1: BigNumber(1234567899),                                                                    comment: '' },
+    // { index: 155, arg1: BigNumber("-1025896473569873254137895.02511669844"),                                      comment: '' },
+    // { index: 156, arg1: BigNumber(-1234567899),                                                                   comment: '' },
+    // { index: 157, arg1: DateTime.fromISO("2016-11-05T09:15:00"),                                                  comment: '' },
+    // { index: 158, arg1: DateTime.fromISO("2017-W23-5"),                                                           comment: '' },
+    // { index: 159, arg1: DateTime.fromISO("2017-W43-5"),                                                           comment: '' },
+    // { index: 160, arg1: Duration.fromObject({months: 7, days: 3, hours: 6}),                                      comment: '' },
+    // { index: 161, arg1: Duration.fromObject({months: 2, hours: 6}),                                               comment: '' },
+    // { index: 162, arg1: Interval.fromDateTimes( DateTime.fromISO("2017-W23-5"), DateTime.fromISO("2017-W43-5") ), comment: '' },
 
   ];
 
