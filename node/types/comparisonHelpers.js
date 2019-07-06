@@ -200,11 +200,12 @@ function _multipleComparator( value, type ){
         comparisonType = _typeofWrapper( type[i] );
 
         if( comparisonType !== intFor[ "string" ] )
+            throw new TypeError( `the item at ${i} in type must be a string it was ${typeof type[i]}.` );
 
-            if( valueType === -1 )
-                return false;
+        if( valueType === -1 )
+            return false;
 
-        if( valueType === comparisonType )
+        if( valueType !== comparisonType )
             break;
     }
 
