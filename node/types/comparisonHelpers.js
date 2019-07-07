@@ -117,8 +117,8 @@ function _typeofWrapper( value ){
         return type ? type : -1;
 
     if(
-        Array.isArray( value ) &&
-        ( symbolToStringTagExists === false || Symbol.toStringTag in value )
+        Array.isArray( value )
+        // && ( symbolToStringTagExists === false || Symbol.toStringTag in value )
     )
         return intFor[ "array" ];
 
