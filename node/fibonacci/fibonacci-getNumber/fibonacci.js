@@ -13,17 +13,17 @@
  *
  *
  */
-
-
 function fibRecursiveNumberAt( position ){
 
-    if( position === 0 ) return 1;
-    if( position === 1 ) return 1;
-    if( position === 2 ) return 1;
+    if( !Number.isInteger( position ) )
+        throw new TypeError( `pos must be an integer, it is currently a(n) ${ typeof position }` );
+
+    if( position < 3 ) return 1;
 
     return fibRecursiveNumberAt( position - 1 ) + fibRecursiveNumberAt( position - 2 );
 
 }
+
 // Test Cases
 // console.log( `position = 1    =>   ${JSON.stringify( fibRecursiveNumberAt( 1 ) )}` );
 // console.log( `position = 2    =>   ${JSON.stringify( fibRecursiveNumberAt( 2 ) )}` );
@@ -34,11 +34,11 @@ function fibRecursiveNumberAt( position ){
 
 
 function fibNumberAt( pos ){
-    if( pos === 0 ) return 1;
-    if( pos === 1 ) return 1;
-    if( pos === 2 ) return 1;
+    if( !Number.isInteger( pos ) )
+        throw new TypeError( `pos must be an integer, it is currently a(n) ${ typeof pos }` );
 
-    let n;
+    if( pos < 3 ) return 1;
+
     let n1 = 1;
     let n2 = 1;
 
@@ -58,7 +58,7 @@ console.log( `position = 2    =>   ${JSON.stringify( fibNumberAt( 2 ) )}` );
 console.log( `position = 3    =>   ${JSON.stringify( fibNumberAt( 3 ) )}` );
 console.log( `position = 4    =>   ${JSON.stringify( fibNumberAt( 4 ) )}` );
 console.log( `position = 5    =>   ${JSON.stringify( fibNumberAt( 5 ) )}` );
-console.log( `position = 25   =>   ${JSON.stringify( fibNumberAt( 99 ) )}` );
+console.log( `position = 99   =>   ${JSON.stringify( fibNumberAt( 99 ) )}` );
 
 
 module.exports.nubmerAt = fibNumberAt;
