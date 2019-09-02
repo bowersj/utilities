@@ -36,24 +36,26 @@ function runTests(){
     // warm up JIT
     console.log( "Warming up JIT compiler" );
     for( let i = 0; i < 100; ++i ){
-        fast.intersect( arr1, arr2 );
-        fast.intersect( arr3, arr4 );
+        fast.intersection_hash_unique( arr1, arr2 );
+        fast.intersection_hash_unique( arr3, arr4 );
     }
 
     for( let i = 0; i < 100; ++i ){
-        fast.intersect_slow( arr1, arr2 );
-        fast.intersect_slow( arr3, arr4 );
+        fast.intersection_hash_nonUnique( arr1, arr2 );
+        fast.intersection_hash_nonUnique( arr3, arr4 );
     }
 
     let tests = 10;
-    let itrs = 10000;
+    let itrs = 40000;
 
     // run tests and parse times
     console.log( "running tests" );
-    res.intersect_numbers = parseTestTimes( test( fast.intersect, [ arr1, arr2 ], tests, itrs ) );
-    console.log( "-> Finished fast intersect for numbers" );
-    res.intersect_str = parseTestTimes( test( fast.intersect, [ arr3, arr4 ], tests, itrs ) );
-    console.log( "-> Finished fast intersect" );
+    // res.intersectHash_numbers_nonUnique = parseTestTimes( test( fast.intersection_hash_nonUnique, [ arr1, arr2 ], tests, itrs ) );
+    // console.log( "-> Finished hast intersect for a non unique list" );
+    res.intersectHash_numbers_unique = parseTestTimes( test( fast.intersection_hash_unique, [ arr1, arr2 ], tests, itrs ) );
+    console.log( "-> Finished hash intersect for numbers" );
+    // res.intersect_str = parseTestTimes( test( fast.intersect, [ arr3, arr4 ], tests, itrs ) );
+    // console.log( "-> Finished fast intersect" );
     // res.intersectSlow_numbers = parseTestTimes( test( fast.intersect_slow, [ arr1, arr2 ], tests, itrs ) );
     // console.log( "-> Finished slow intersect for numbers" );
     // res.intersectSlow_str = parseTestTimes( test( fast.intersect_slow, [ arr3, arr4 ], tests, itrs ) );
@@ -82,9 +84,9 @@ function test( func, parameters, tests = 10, itrs = 100000 ){
 
 function parseTestTimes( arrOfNumbers ){
     return {
-        avg: stats.getAverage( arrOfNumbers ).toLocaleString( "en-US" ),
-        med: stats.getMedian( arrOfNumbers ).toLocaleString( "en-US" ),
-        std: stats.getSampleStandardDeviation( arrOfNumbers ).toLocaleString( "en-US" )
+        avg: Math.floor( stats.getAverage( arrOfNumbers ) ).toLocaleString( "en-US" ),
+        med: Math.floor( stats.getMedian( arrOfNumbers ) ).toLocaleString( "en-US" ),
+        std: Math.floor( stats.getSampleStandardDeviation( arrOfNumbers ) ).toLocaleString( "en-US" )
     }
 }
 
