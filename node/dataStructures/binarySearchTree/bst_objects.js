@@ -1,6 +1,3 @@
-'use strict';
-
-
 class QueueNode {
     constructor(val){
         this.val = val;
@@ -69,7 +66,7 @@ class Node {
     }
 }
 
-module.exports = class BST{
+class BST{
     constructor(){
         this.root = null;
     }
@@ -473,4 +470,16 @@ module.exports = class BST{
         this.root = buildTree( sorted );
         return this.validate();
     }
-};
+}
+
+
+let bst = new BST();
+bst.insert(5);
+bst.insert(3);
+bst.insert(2);
+bst.insert(4);
+bst.insert(7);
+bst.insert(6);
+bst.insert(8);
+
+console.log( JSON.stringify( bst, null, 2 ) );
