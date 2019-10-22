@@ -87,4 +87,61 @@ function binarySearch( arr, search ) {
 //     )
 // );
 
+// TODO: needs much more through testing to ensure it is working properly
+function binarySearch_byOptionalProperty( arr, search, opts = {} ) {
+
+    opts = Object.assign( { by: null }, opts );
+
+    // build retriever
+    function buildGetter( opts ){
+        if( opts.by !== null )
+            return function ( val ){
+                if( val )
+                    return val[ opts.by ];
+                else
+                    return undefined;
+            };
+        else
+            return function ( val ){
+                return val;
+            };
+    }
+
+
+    let getVal = buildGetter( opts );
+
+    let start = 0;
+    let end   = arr.length;
+
+    while( start <= end ){
+        // get the middle of the list as a reference to allow for
+        // identifying which half to ignore while searching through it.
+        let mid = Math.floor( ( end - start )/2 ) + start;
+
+        if( getVal( arr[mid] ) === search ) return mid;
+
+        // logic for what to ignore as the algorithm is searching
+        // through the list.
+        if( getVal( arr[mid] ) < search ) start = mid + 1;
+        else end = mid - 1;
+    }
+
+    return -1
+}
+
+
+// let arr = [ 1,2,3,4,5,6,7,8 ];
+// let arr2 = [
+//     { id:1, str: "hi" },
+//     { id:2, str: "there" },
+//     { id:3, str: "again" },
+//     { id:4, str: "and" },
+//     { id:5, str: "again" },
+//     { id:6, str: "and" },
+//     { id:7, str: "again" },
+//     { id:8, str: "hi" },
+// ];
+// console.log( binarySearch( arr, 5 ) );
+// console.log( binarySearch( arr2, -1, { by: "id" } ) );
+
 module.exports.search = binarySearch;
