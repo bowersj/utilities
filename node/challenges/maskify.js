@@ -13,6 +13,7 @@
  * maskify("Skippy")                                   == "##ippy"
  * maskify("Nananananananananananananananana Batman!") == "####################################man!"
  *
+ * https://www.codewars.com/kata/5412509bd436bd33920011bc
  */
 
 // return masked string
