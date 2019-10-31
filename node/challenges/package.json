@@ -2,10 +2,11 @@
   "name": "challenges",
   "version": "1.0.0",
   "description": "personal collection of completed challenges",
-  "main": "abbverateTwoWords.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "",
+  "scripts": {},
   "author": "Josh Bowers",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^6.2.2"
+  }
 }
