@@ -47,7 +47,7 @@
 module.exports = hungryFoxes;
 
 
-function killChickensLogic( item ){
+function poisonLogic( item ){
     let groups = item.val.split( "X" );
 
     for( let j = 0, jl = groups.length; j < jl; ++j ){
@@ -67,11 +67,12 @@ function tokenize( farm ){
 
     let cage = "";
     let noCage = "";
+    // consider changing to object and creating functions to update that object
     let inCage = false;
     let foxInGroup = false;
     let foxOutside = false;
     let poisonInGroup = false;
-    let poisonOutSide = false;
+    let poisonOutside = false;
     let start = -1;
 
     for( let i = 0, l = token.length; i < l; ++i ){
@@ -93,18 +94,28 @@ function tokenize( farm ){
             default:
                 if( inCage ){
                     cage += token[i];
-                    
-                    if( token[i] === "F" )
+
+                    if( token[i] === "." )
+                        break;
+                    else if( token[i] === "F" )
                         foxInGroup = true;
                     else if( token[i] === "X" )
                         poisonInGroup = true;
+
                 } else {
                     noCage += token[i];
+
+                    if( token[i] === "." )
+                        break;
+                    else if( token[i] === "F" )
+                        foxOutside = true;
+                    else if( token[i] === "X" )
+                        poisonOutside = true;
                 }
         }
     }
 
-    items.push({ inCage, val: cage, start, foxInGroup, poisonInGroup });
+    items.push({ inCage, val: noCage, start, foxInGroup: foxOutside, poisonInGroup: poisonOutside });
 
     return items;
 }
@@ -112,19 +123,15 @@ function tokenize( farm ){
 
 function hungryFoxes(farm) {
     let items = tokenize( farm );
-
-    console.log( items );
-
-    let item = {};
+    let group = {};
 
     for( let i = 0, l = items.length; i < l; ++i ){
-        item = items[i];
-        if( item.val.includes( "X" ) ){
-            item = killChickensLogic( item );
-        } else {
-            if( item.val.includes( "F" ) ){
-                item.val = item.val.replace( /C/g, "." );
-            }
+        group = items[i];
+        if( group.poisonInGroup )
+            group = poisonLogic( group );
+        else {
+            if( group.foxInGroup )
+                group.val = group.val.replace( /C/g, "." );
         }
     }
 
