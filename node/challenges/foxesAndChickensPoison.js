@@ -48,7 +48,7 @@ module.exports = hungryFoxes;
 
 
 function poisonLogic( item ){
-    let groups = item.val.split( "X" );
+    let groups = item.farmArea.split( "X" );
 
     for( let j = 0, jl = groups.length; j < jl; ++j ){
         if( groups[j].includes( "F" ) )
@@ -56,7 +56,7 @@ function poisonLogic( item ){
     }
 
     groups = groups.join( "X" );
-    item.val = groups;
+    item.farmArea = groups;
     return item;
 }
 
@@ -84,7 +84,7 @@ function tokenize( farm ){
                 start = i;
                 break;
             case "]":
-                items.push({ inCage, val: cage, start, foxInGroup, poisonInGroup });
+                items.push({ inCage, farmArea: cage, start, hasFox: foxInGroup, hasPoison: poisonInGroup });
                 noCage += "]";
                 inCage = false;
                 foxInGroup = false;
@@ -115,7 +115,7 @@ function tokenize( farm ){
         }
     }
 
-    items.push({ inCage, val: noCage, start, foxInGroup: foxOutside, poisonInGroup: poisonOutside });
+    items.push({ inCage, farmArea: noCage, start, hasFox: foxOutside, hasPoison: poisonOutside });
 
     return items;
 }
@@ -127,19 +127,17 @@ function hungryFoxes(farm) {
 
     for( let i = 0, l = items.length; i < l; ++i ){
         group = items[i];
-        if( group.poisonInGroup )
+        if( group.hasPoison )
             group = poisonLogic( group );
-        else {
-            if( group.foxInGroup )
-                group.val = group.val.replace( /C/g, "." );
-        }
+        else if( group.hasFox )
+            group.farmArea = group.farmArea.replace( /C/g, "." );
     }
 
-    let nextDay = items[ items.length - 1 ].val;
+    let nextDay = items[ items.length - 1 ].farmArea;
 
     for( let i = 0, l = items.length; i < l; ++i ){
         if( items[i].inCage )
-            nextDay = nextDay.substring( 0, items[i].start + 1 ) + items[i].val + nextDay.substring( items[i].start + 1 )
+            nextDay = nextDay.substring( 0, items[i].start + 1 ) + items[i].farmArea + nextDay.substring( items[i].start + 1 )
     }
 
     return nextDay;
