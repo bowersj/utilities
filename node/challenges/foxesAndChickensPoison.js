@@ -48,15 +48,18 @@ module.exports = hungryFoxes;
 
 
 function poisonLogic( item ){
-    let groups = item.farmArea.split( "X" );
+    if( item.hasFox ){
+        let groups = item.farmArea.split( "X" );
 
-    for( let j = 0, jl = groups.length; j < jl; ++j ){
-        if( groups[j].includes( "F" ) )
-            groups[j] = groups[j].replace( /[CF]/g, "." )
+        for( let j = 0, jl = groups.length; j < jl; ++j ){
+            if( groups[j].includes( "F" ) )
+                groups[j] = groups[j].replace( /[CF]/g, "." )
+        }
+
+        groups = groups.join( "X" );
+        item.farmArea = groups;
     }
 
-    groups = groups.join( "X" );
-    item.farmArea = groups;
     return item;
 }
 
@@ -67,7 +70,6 @@ function tokenize( farm ){
 
     let cage = "";
     let noCage = "";
-    // consider changing to object and creating functions to update that object
     let inCage = false;
     let foxInGroup = false;
     let foxOutside = false;
@@ -138,35 +140,6 @@ function hungryFoxes(farm) {
     for( let i = 0, l = items.length; i < l; ++i ){
         if( items[i].inCage )
             nextDay = nextDay.substring( 0, items[i].start + 1 ) + items[i].farmArea + nextDay.substring( items[i].start + 1 )
-    }
-
-    return nextDay;
-}
-
-
-function hungryFoxes_v1(farm) {
-
-    let items = farm.replace( /[\[]/g, "!$" ).split( /[!]/g );
-    const l = items.length;
-
-    for( let i = 0; i < l; ++i ){
-        if( items[i].includes( "F" ) ){
-            console.log( items[i] );
-            items[i] = items[i].replace( /C/g, "." );
-
-            if( i % 2 === 1 ){
-
-            }
-        }
-    }
-
-    let nextDay = "";
-
-    for( let i = 0; i < l; ++i ){
-        if( i % 2 === 1 )
-            nextDay += `[${items[i]}]`;
-        else
-            nextDay += items[i];
     }
 
     return nextDay;
