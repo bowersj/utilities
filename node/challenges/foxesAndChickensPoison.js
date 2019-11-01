@@ -71,9 +71,9 @@ function tokenize( farm ){
     let cage = "";
     let noCage = "";
     let inCage = false;
-    let foxInGroup = false;
+    let foxInCage = false;
     let foxOutside = false;
-    let poisonInGroup = false;
+    let poisonInCage = false;
     let poisonOutside = false;
     let start = -1;
 
@@ -86,33 +86,36 @@ function tokenize( farm ){
                 start = i;
                 break;
             case "]":
-                items.push({ inCage, farmArea: cage, start, hasFox: foxInGroup, hasPoison: poisonInGroup });
+                items.push({ inCage, farmArea: cage, start, hasFox: foxInCage, hasPoison: poisonInCage });
                 noCage += "]";
                 inCage = false;
-                foxInGroup = false;
-                poisonInGroup = false;
+                foxInCage = false;
+                poisonInCage = false;
                 cage = "";
+                break;
+            case "F":
+                if( inCage ){
+                    cage += token[i];
+                    foxInCage = true;
+                } else {
+                    noCage += token[i];
+                    foxOutside = true;
+                }
+                break;
+            case "X":
+                if( inCage ){
+                    cage += token[i];
+                    poisonInCage = true;
+                } else {
+                    noCage += token[i];
+                    poisonOutside = true;
+                }
                 break;
             default:
                 if( inCage ){
                     cage += token[i];
-
-                    if( token[i] === "." )
-                        break;
-                    else if( token[i] === "F" )
-                        foxInGroup = true;
-                    else if( token[i] === "X" )
-                        poisonInGroup = true;
-
                 } else {
                     noCage += token[i];
-
-                    if( token[i] === "." )
-                        break;
-                    else if( token[i] === "F" )
-                        foxOutside = true;
-                    else if( token[i] === "X" )
-                        poisonOutside = true;
                 }
         }
     }
@@ -146,9 +149,9 @@ function hungryFoxes(farm) {
 }
 
 
-const before = "...CC...X...[CCC]CCC[CCCXCCCF]CCCC[CFC]FCC";
-const after = "...CC...X...[CCC]...[CCCX....]....[.F.]...";
-
-console.log( "before:", before );
-console.log( "rest:", hungryFoxes( before ) );
-console.log( "goal:", after );
+// const before = "...CC...X...[CCC]CCC[CCCXCCCF]CCCC[CFC]FCC";
+// const after = "...CC...X...[CCC]...[CCCX....]....[.F.]...";
+//
+// console.log( "before:", before );
+// console.log( "rest:", hungryFoxes( before ) );
+// console.log( "goal:", after );
