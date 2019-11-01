@@ -4,7 +4,8 @@
   "description": "personal collection of completed challenges",
   "main": "",
   "scripts": {
-    "test_fox": "mocha"
+    "test_fox": "mocha",
+    "test_smi": "mocha ./test/countSmilies_test.js"
   },
   "author": "Josh Bowers",
   "license": "ISC",
