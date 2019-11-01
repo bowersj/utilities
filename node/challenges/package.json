@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "personal collection of completed challenges",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "test_fox": "mocha"
+  },
   "author": "Josh Bowers",
   "license": "ISC",
   "dependencies": {
