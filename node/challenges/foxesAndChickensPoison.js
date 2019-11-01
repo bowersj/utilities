@@ -47,19 +47,16 @@
 module.exports = hungryFoxes;
 
 
-function removeChickensIfFoxesExistInGroup( item ){
+function killChickensLogic( item ){
     let groups = item.val.split( "X" );
 
     for( let j = 0, jl = groups.length; j < jl; ++j ){
-        if( groups[j].includes( "F" ) ){
+        if( groups[j].includes( "F" ) )
             groups[j] = groups[j].replace( /[CF]/g, "." )
-        }
     }
 
     groups = groups.join( "X" );
-
     item.val = groups;
-
     return item;
 }
 
@@ -71,6 +68,10 @@ function tokenize( farm ){
     let cage = "";
     let noCage = "";
     let inCage = false;
+    let foxInGroup = false;
+    let foxOutside = false;
+    let poisonInGroup = false;
+    let poisonOutSide = false;
     let start = -1;
 
     for( let i = 0, l = token.length; i < l; ++i ){
@@ -82,21 +83,28 @@ function tokenize( farm ){
                 start = i;
                 break;
             case "]":
-                items.push({ inCage, val: cage, start });
+                items.push({ inCage, val: cage, start, foxInGroup, poisonInGroup });
                 noCage += "]";
                 inCage = false;
+                foxInGroup = false;
+                poisonInGroup = false;
                 cage = "";
                 break;
             default:
                 if( inCage ){
                     cage += token[i];
+                    
+                    if( token[i] === "F" )
+                        foxInGroup = true;
+                    else if( token[i] === "X" )
+                        poisonInGroup = true;
                 } else {
                     noCage += token[i];
                 }
         }
     }
 
-    items.push({ inCage: false, val: noCage });
+    items.push({ inCage, val: cage, start, foxInGroup, poisonInGroup });
 
     return items;
 }
@@ -105,12 +113,14 @@ function tokenize( farm ){
 function hungryFoxes(farm) {
     let items = tokenize( farm );
 
+    console.log( items );
+
     let item = {};
 
     for( let i = 0, l = items.length; i < l; ++i ){
         item = items[i];
         if( item.val.includes( "X" ) ){
-            item = removeChickensIfFoxesExistInGroup( item );
+            item = killChickensLogic( item );
         } else {
             if( item.val.includes( "F" ) ){
                 item.val = item.val.replace( /C/g, "." );
@@ -158,9 +168,9 @@ function hungryFoxes_v1(farm) {
 }
 
 
-// const before = "...CC...X...[CCC]CCC[CCCXCCCF]CCCC[CFC]FCC";
-// const after = "...CC...X...[CCC]...[CCCX....]....[.F.]...";
-//
-// console.log( "before:", before );
-// console.log( "rest:", hungryFoxes( before ) );
-// console.log( "goal:", after );
+const before = "...CC...X...[CCC]CCC[CCCXCCCF]CCCC[CFC]FCC";
+const after = "...CC...X...[CCC]...[CCCX....]....[.F.]...";
+
+console.log( "before:", before );
+console.log( "rest:", hungryFoxes( before ) );
+console.log( "goal:", after );
