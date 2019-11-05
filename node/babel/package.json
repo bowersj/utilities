@@ -1,0 +1,12 @@
+{
+  "name": "testing-babel",
+  "version": "1.0.0",
+  "description": "testing babel features",
+  "main": "",
+  "scripts": {},
+  "author": "Josh Bowers",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3"
+  }
+}
